@@ -1,4 +1,4 @@
-# supreme-robot
+# PyPayload
 Automatic Metasploit Payload Generator
 
 ## Introduction
@@ -17,3 +17,17 @@ This project will still be a work-in-progress. If you examine the source code, y
 * Git
 
 ## Download & Installation
+
+Get the repository off of Github by cloning it:
+
+    git clone https://github.com/ex0dus-0x/pypayload
+
+Change into the pypayload directory:
+
+    cd /path/to/pypayload
+
+Execute with python:
+
+    python pypayload.py
+
+The generated payload will be in the same directory as pypayload.

