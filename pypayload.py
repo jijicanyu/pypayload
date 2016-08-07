@@ -20,7 +20,7 @@ while (True):
     print "| |  | |_| | | | (_| | |_| | | (_) | (_| | (_| |"
     print "\_|   \__, \_|  \__,_|\__, |_|\___/ \__,_|\__,_|"
     print "       __/ |           __/ |                    "
-    print "      |___/           |___/                     " + W 
+    print "      |___/           |___/                     " + W
 
 
 
@@ -32,11 +32,14 @@ while (True):
     if str(platform.system()) != "Linux":
 		print R + "You are not using Linux. It is the recommended operating system for this program. Some features may not work" + W
     else:
-        print B + "Supreme-Robot v1 release" + W
+        print B + "PyPayload v1 release" + W
         print "     "
 
     print GR + "What is the target operating system?" + W
-    print "(1) Windows"
+    print "(1) Windows x86/64"
+    print "(2) Linux x86"
+    print "(3) Linux x64"
+    print "(4) Android"
     opsys = raw_input("[>] ")
     print C + "Choose the payload to generate:" + P
     print "(1) windows/meterpreter/reverse_tcp"
@@ -59,7 +62,7 @@ while (True):
     print "(15) windows/dllinject/reverse_http"
     print "(16) windows/dllinject/reverse_https" + W
     payop = raw_input("[>] ")
-    print "Good..good. What is the " +  O + "LHOST?" + w
+    print "Good..good. What is the " +  O + "LHOST?" + W
     lhost = raw_input("[>] ")
     print "What is the " + O + "LPORT?" + W
     lport = raw_input("[>] ")
