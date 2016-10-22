@@ -1,4 +1,4 @@
-import sys, platform, subprocess, os, socket
+usrimport sys, platform, subprocess, os, socket
 from urllib2 import urlopen
 
 # Bold
